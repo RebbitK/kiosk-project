@@ -92,7 +92,7 @@ public class screen {
         buy.buyok();
         System.out.println("주문이 완료되었습니다! \n");
         System.out.printf("대기번호는 [ %d ] 번 입니다.\n",buy.num);
-        System.out.println("(3초후 메뉴판으로 돌아갑니다.");
+        System.out.println("(3초후 메뉴판으로 돌아갑니다.)");
         buy.num++;
         // 3초딜레이를 주는 코드 그냥쓰면 sleep에서 오류가 발생하기 때문에 try-catch문으로 이를 회피합니다.
         try {
