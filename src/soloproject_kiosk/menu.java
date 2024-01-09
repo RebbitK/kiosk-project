@@ -2,7 +2,7 @@ package soloproject_kiosk;
 
 public class menu {
     // 필수사항 메뉴클래스에 이름(menu_name)과 설명(menu_explanation)을 가지는 필드를 가지게 합니다.
-    String menu_explanation,menu_name;
+    protected String menu_explanation,menu_name;
 
     //생성자로 메뉴이름과 메뉴설명을 받아와서 this.으로 필드에 넣습니다.
     public menu(String menu_name,String menu_explanation){

@@ -1,12 +1,10 @@
 package soloproject_kiosk;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 
 public class buy_order {
-    int num = 1; // 대기번호
-    double fullsum=0; //총 매출
+    protected int num = 1; // 대기번호
+    private double fullsum=0; //총 매출
     ArrayList<product> buy_list = new ArrayList<>(); //장바구니안 상품 리스트
     ArrayList<product> sold_out = new ArrayList<>(); //판매한 상품 리스트
 //구매목록에 상품을 추가시켜주는 메서드
@@ -43,7 +41,7 @@ public class buy_order {
         for(product p : sold_out){
             System.out.printf("- %-25s| W %.1f\n",p.menu_name,p.price);
         }
-        System.out.printf("[ 총 판매금액 현황 ] \n 현재까지 총 판매된 금액은 [ W %.1f ] 입니다.\n1. 돌아가기 \n",fullsum);
+        System.out.printf("\n[ 총 판매금액 현황 ] \n 현재까지 총 판매된 금액은 [ W %.1f ] 입니다.\n1. 돌아가기 \n",fullsum);
 
     }
 

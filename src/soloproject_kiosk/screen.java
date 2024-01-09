@@ -1,13 +1,12 @@
 package soloproject_kiosk;
-
-import java.util.InputMismatchException;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
+import java.lang.*;
 public class screen {
+    //피드백! case 안에 있는 event를 메서드로 묶어 가독성을 더합시다!
     Scanner sc = new Scanner(System.in);
     order_list li = new order_list();
     buy_order buy = new buy_order();
-    int choose;
+    private int choose;
     //메인화면을 나타내는 while문으로 계속 돌면서 사용자의 입력에 따라 맞는 화면을 띄워주는 메소드로 이동시켜주는 메소드
     public void main_screen(){
         while (true) {
@@ -26,16 +25,7 @@ public class screen {
                 error_check();
                 switch (choose) {
                     case 0:
-                        buy.view_sold();
-                        while (true){
-                            error_check();
-                            if (choose==1){
-                            }else{
-                                System.out.println("잘못된 값을 입력하셨습니다. 다시 입력해 주세요.");
-                                continue;
-                            }
-                            break;
-                        }
+                        secret_screen();
                         break;
                     case 1,2,3,4:
                         food_screen(li.foods.get(choose));
@@ -45,21 +35,7 @@ public class screen {
                             System.out.println("장바구니가 비어있습니다.");
                             break;
                         }
-                        buy.view_buy();
-                        while (true){
-                            error_check();
-                            switch (choose) {
-                                case 1:
-                                    order_complete();
-                                    break;
-                                case 2:
-                                    break;
-                                default:
-                                    System.out.println("잘못된 값을 입력하셨습니다. 다시 입력해 주세요.");
-                                    continue;
-                            }
-                            break;
-                        }
+                        basket_screen();
                         break;
                     case 6:
                         if(buy.buy_list.isEmpty()){
@@ -96,6 +72,19 @@ public class screen {
             else{
                 System.out.println("잘못된 값을 입력하셨습니다. 다시 입력해 주세요.");
             }
+        }
+    }
+    //0 입력시 출력되는 판매된 상품을 보여주는 비밀코드
+    public void secret_screen(){
+        buy.view_sold();
+        while (true){
+            error_check();
+            if (choose==1){
+            }else{
+                System.out.println("잘못된 값을 입력하셨습니다. 다시 입력해 주세요.");
+                continue;
+            }
+            break;
         }
     }
     //주문이 완료되었을 때 인터페이스를 띄우주고 3초 딜레이를 주는 메소드
@@ -168,6 +157,24 @@ public class screen {
                 case 1:
                     buy.add_buy(pro);
                     System.out.printf("%s가 장바구니에 추가되었습니다. \n",pro.menu_name);
+                    break;
+                case 2:
+                    break;
+                default:
+                    System.out.println("잘못된 값을 입력하셨습니다. 다시 입력해 주세요.");
+                    continue;
+            }
+            break;
+        }
+    }
+    // 장바구니 상황에 대한 스크린을 출력시켜주는 메서드
+    public void basket_screen(){
+        buy.view_buy();
+        while (true){
+            error_check();
+            switch (choose) {
+                case 1:
+                    order_complete();
                     break;
                 case 2:
                     break;
